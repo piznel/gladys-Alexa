@@ -9,12 +9,12 @@ module.exports = function(sails) {
   return {
     routes: {
       before: {
-        'patch /alexa/datasave': (req, res, next) => sails.hooks.policies.middleware.checktoken(req, res, next),
+        'patch /alexa/save': (req, res, next) => sails.hooks.policies.middleware.checktoken(req, res, next),
         'get /alexa/device': (req, res, next) => sails.hooks.policies.middleware.checktoken(req, res, next)
 
       },
       after: {
-        'patch /alexa/datasave': alexaController.saveData,
+        'patch /alexa/save': alexaController.saveConfig,
         'get /alexa/device': alexaController.getDeviceTypes
       }
     }

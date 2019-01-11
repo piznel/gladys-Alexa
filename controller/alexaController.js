@@ -1,11 +1,10 @@
-saveData = require('../lib/alexa.saveData.js');
+saveConfig = require('../lib/alexa.saveConfig.js');
 getDeviceTypes = require('../lib/alexa.getDeviceTypes.js')
-
 
 module.exports = {
 
-  saveData: function(req, res, next) {
-    saveData(req.body)
+    saveConfig: function(req, res, next) {
+        saveConfig(req.body)
       .then((result) => res.json(result))
       .catch(next);
   },
