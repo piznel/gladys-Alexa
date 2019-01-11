@@ -1,10 +1,10 @@
-<script src="/hooks/gladys-alexa/js/alexa.service.js"></script>
-<script src="/hooks/gladys-alexa/js/alexa.controller.js"></script>
+<script src="/hooks/alexa/js/alexa.service.js"></script>
+<script src="/hooks/alexa/js/alexa.controller.js"></script>
 
 
 <div data-ng-controller="alexaCtrl as vm">
   <div class="row" ng-show="!vm.ready">
-    <div class="col-centered col-md-4 col-md-offset-4">
+    <div class="col-centered col-md-6 col-md-offset-6">
       <div class="spinner-box">
         <div class="spinner">
           <div class="double-bounce1"></div>
@@ -16,7 +16,7 @@
 
   <div class="row" ng-show="vm.ready" ng-cloak>
 
-    <div class="col-centered col-md-4" ng-repeat="room in vm.roomDeviceTypes">
+    <div class="col-centered col-md-6" ng-repeat="room in vm.alexaDevices">
 
       <div class="box skin-box box-primary">
 
@@ -44,32 +44,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="type in room.deviceTypes" class="ng-cloak">
+              <tr ng-show="{{type.type == 'binary' && type.type.length}}" ng-repeat="type in room.deviceTypes" class="ng-cloak">
                 <td>{{type.name}}</td>
                 <td>{{type.deviceTypeName}}</td>
                 <td>
-                  <div class="icheckbox_minimal-blue checked" aria-checked="false" aria-disabled="false" style="position: relative;">
-                    <input type="checkbox" class="minimal" ng-checked="type.accessAlexa" style="position: absolute; opacity: 0;">
-                    <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
-                    </ins>
-                  </div>
-
-
-
+                  <input type="checkbox" class="minimal" ng-checked="type.alexa" ng-model="type.alexa">
                 </td>
-                <td><input type="text" placeholder="Nom pour Alexa>" class="form-control" ng-model="type.nameAlexa" /></td>
+                <td><input type="text" placeholder="Nom pour Alexa" class="form-control" ng-model="type.friendlyName" ng-disabled="type.alexa == false" /></td>
               </tr>
             </tbody>
           </table>
-
         </div>
-
-
-
-
       </div>
       <!-- box-->
-
     </div>
   </div>
   <!-- row -->
