@@ -13,6 +13,14 @@
       </div>
     </div>
   </div>
+  <div class="row" ng-show="vm.ready" ng-cloak>
+    <div class="col-centered col-md-12">
+
+      <button class="btn btn-flat btn-primary margin" ng-click="vm.saveConfig()"><i class="fa fa-save"></i> {{ 'SAVE' |
+        translate }}</button>
+    </div>
+  </div>
+
 
   <div class="row" ng-show="vm.ready" ng-cloak>
 
@@ -23,7 +31,6 @@
         <div class="box-header with-border">
           <h3 class="box-title">{{room.name}}</h3>
         </div>
-
         <div class="box-body table-responsive">
 
           <table class="table table-bordered table-hover">
