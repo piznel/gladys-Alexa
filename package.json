@@ -1,0 +1,27 @@
+{
+  "name": "gladys-alexa",
+  "version": "0.1.0",
+  "description": "control binary devices with alexa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piznel/Gladys-Alexa.git"
+  },
+  "keywords": [
+    "gladys",
+    "alexa"
+  ],
+  "author": "piznel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/piznel/Gladys-Alexa/issues"
+  },
+  "homepage": "https://github.com/piznel/Gladys-Alexa#readme",
+  "dependencies": {
+    "alexa-raspberry": "^0.1.3",
+    "data-store": "^3.1.0"
+  }
+}
