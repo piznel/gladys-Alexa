@@ -40,7 +40,7 @@
   
         vm.alexaDevices.forEach(function (room) {
             room.deviceTypes.forEach(function (deviceType) {
-                if(deviceType.alexa) {
+                if(deviceType.friendlyName) {
                   alexaDevice[deviceType.id] = {'alexa': deviceType.alexa, 'friendlyName': deviceType.friendlyName}
                 }
             });
