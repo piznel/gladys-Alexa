@@ -15,7 +15,9 @@
   </div>
   <div class="row" ng-show="vm.ready" ng-cloak>
     <div class="col-centered col-md-12">
-      <button class="btn btn-flat btn-primary margin" ng-click="vm.saveConfig()"><i class="fa fa-save"></i> {{ 'SAVE' |
+      <button class="btn btn-flat btn-primary margin" ng-click="vm.saveConfig()"><i class="fa fa-save"></i> {{ 'SAVE_SETTINGS' |
+        translate }}</button>
+      <button class="btn btn-flat btn-primary margin" data-toggle="modal" data-target=".alexa-help"><i class="fa fa-info-circle"></i> {{ 'HELP_ALEXA' |
         translate }}</button>
     </div>
   </div>
@@ -36,24 +38,24 @@
             <thead>
               <tr>
                 <th>
-                  device name
+                  {{ 'DEVICE' | translate }}
                 </th>
                 <th>
-                  devicetype name
+                  {{ 'DEVICETYPE' | translate }}
                 </th>
                 <th>
-                  alexa ?
+                  {{ 'ALEXA_ACTIF' | translate }}
                 </th>
                 <th>
-                  nom alexa
+                  {{ 'ALEXA_NAME' | translate }}
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr ng-show="{{type.type == 'binary' && type.type.length}}" ng-repeat="type in room.deviceTypes" class="ng-cloak">
-                    <td style="vertical-align: middle">{{type.name}}</td>
-                    <td style="vertical-align: middle">{{type.deviceTypeName}}</td>
-                    <td style="text-align:center;">
+                <td style="vertical-align: middle">{{type.name}}</td>
+                <td style="vertical-align: middle">{{type.deviceTypeName}}</td>
+                <td style="text-align:center;">
                   <input type="checkbox" class="minimal" ng-model="type.alexa">
                 </td>
                 <td><input type="text" placeholder="Nom pour Alexa" class="form-control" ng-model="type.friendlyName" ng-disabled="type.alexa == false" /></td>
@@ -66,4 +68,22 @@
     </div>
   </div>
   <!-- row -->
+</div>
+<div class="modal fade alexa-help" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div>
+          {{ 'ALEXA_TEXT_1' | translate }}<br />
+          {{ 'ALEXA_TEXT_2' | translate }}<br />
+          {{ 'ALEXA_TEXT_3' | translate }}<br />
+          {{ 'ALEXA_TEXT_4' | translate }}<br />
+          {{ 'ALEXA_TEXT_5' | translate }}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
 </div>
