@@ -18,6 +18,7 @@
       vm.alexaDevices = []
   
       vm.saveConfig = saveConfig;
+      vm.restart = restart;
   
       activate()
   
@@ -46,6 +47,10 @@
             });
         });
         alexaService.saveConfig(alexaDevice)
+      }
+
+      function restart() {
+        alexaService.restart()
       }
     }
   })();

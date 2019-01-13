@@ -12,6 +12,7 @@
       var service = {
         saveConfig: saveConfig,
         getDeviceTypes: getDeviceTypes,
+        restart: restart,
         successNotificationTranslated: successNotificationTranslated,
         errorNotificationTranslated: errorNotificationTranslated
       };
@@ -26,6 +27,9 @@
         return $http({ method: 'GET', url: '/alexa/device/' });
       }
 
+      function restart() {
+        return $http({ method: 'GET', url: '/alexa/restart/' });
+      }
 
       function successNotificationTranslated(key, complement) {
         return $translate(key)
