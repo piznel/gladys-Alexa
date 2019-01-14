@@ -13,4 +13,4 @@ Control the "binary" type devicetypes of Gladys by Alexa.
 
 3. Restart Gladys.
 
-4. From the Alexa application, search for new devices. They will be recognized as Wemo sockets ; you can change them to "lamp" type from the application, if you wish.
+4. From the Alexa application, search for new devices ("add device / Other"). They will be recognized as Wemo sockets ; you can change them to "lamp" type from the application, if you wish.
