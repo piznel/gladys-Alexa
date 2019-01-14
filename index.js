@@ -3,6 +3,7 @@ module.exports = function(sails) {
   //const alexa = require('./lib/alexa.wemore.js');
   const alexaController = require('./controller/alexaController.js')
   const install = require('./lib/alexa.install.js');
+  const uninstall = require('./lib/alexa.uninstall.js');
 
   gladys.on('ready', function() {
     alexa();
@@ -10,6 +11,7 @@ module.exports = function(sails) {
 
   return {
     install: install,
+    uninstall: uninstall,
     routes: {
       before: {
         'patch /alexa/save': (req, res, next) => sails.hooks.policies.middleware.checktoken(req, res, next),
