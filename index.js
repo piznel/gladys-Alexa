@@ -1,5 +1,6 @@
 module.exports = function(sails) {
-  const alexa = require('./lib/alexa.js');
+  const alexa = require('./lib/alexa.fauxmojs.js');
+  //const alexa = require('./lib/alexa.wemore.js');
   const alexaController = require('./controller/alexaController.js')
   const install = require('./lib/alexa.install.js');
 
