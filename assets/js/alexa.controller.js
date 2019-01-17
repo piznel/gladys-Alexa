@@ -31,7 +31,7 @@
 
     function activate() {
       vm.remoteIsBusy = true;
-      return paramService.getvalue('Alexa_lib')
+      return alexaService.getLibrary()
         .then(function(data) {
           if (data.data === 1) {
             vm.libOptions.selectedLibrary = { id: 1, name: "fauxmojs" }
