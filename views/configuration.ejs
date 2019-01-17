@@ -19,71 +19,76 @@
         translate }}</button>
       <button class="btn btn-flat btn-primary margin" data-toggle="modal" data-target=".alexa-help"><i class="fa fa-info-circle"></i> {{ 'HELP_ALEXA' |
         translate }}</button>
-    </div>
-  </div>
 
-
-  <div class="row" ng-show="vm.ready" ng-cloak>
-
-    <div class="col-centered col-md-6" ng-repeat="room in vm.alexaDevices">
-
-      <div class="box skin-box box-primary">
-
-        <div class="box-header with-border">
-          <h3 class="box-title">{{room.name}}</h3>
-        </div>
-        <div class="box-body table-responsive">
-
-          <table class="table table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>
-                  {{ 'DEVICE' | translate }}
-                </th>
-                <th>
-                  {{ 'DEVICETYPE' | translate }}
-                </th>
-                <th>
-                  {{ 'ALEXA_ACTIF' | translate }}
-                </th>
-                <th>
-                  {{ 'ALEXA_NAME' | translate }}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-show="{{type.type == 'binary' && type.type.length}}" ng-repeat="type in room.deviceTypes" class="ng-cloak">
-                <td style="vertical-align: middle">{{type.name}}</td>
-                <td style="vertical-align: middle">{{type.deviceTypeName}}</td>
-                <td style="text-align:center;">
-                  <input type="checkbox" class="minimal" ng-model="type.alexa">
-                </td>
-                <td><input type="text" placeholder="Nom pour Alexa" class="form-control" ng-model="type.friendlyName" ng-disabled="type.alexa == false" /></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <!-- box-->
-    </div>
-  </div>
-  <!-- row -->
-  <div class="modal fade alexa-help" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div>
-            {{ 'ALEXA_TEXT_1' | translate }}<br />
-            {{ 'ALEXA_TEXT_2' | translate }}<br />
-            {{ 'ALEXA_TEXT_3' | translate }}<br />
-            {{ 'ALEXA_TEXT_4' | translate }}<br />
-            {{ 'ALEXA_TEXT_5' | translate }}
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary btn-flat" data-dismiss="modal">OK</button>
-        </div>
+      <div class="form-group">
+        <label for="selectLibrary">{{ 'SELECT_LIBRARY' | translate }}</label>
+        <select name="selectLibrary" id="selectLibrary" ng-options="option.name for option in vm.libOptions.library track by option.id" ng-model="vm.libOptions.selectedLibrary" ng-change="vm.saveLibrary()"></select>
       </div>
     </div>
   </div>
+</div>
+<div class="row" ng-show="vm.ready" ng-cloak>
+
+  <div class="col-centered col-md-6" ng-repeat="room in vm.alexaDevices">
+
+    <div class="box skin-box box-primary">
+
+      <div class="box-header with-border">
+        <h3 class="box-title">{{room.name}}</h3>
+      </div>
+      <div class="box-body table-responsive">
+
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>
+                {{ 'DEVICE' | translate }}
+              </th>
+              <th>
+                {{ 'DEVICETYPE' | translate }}
+              </th>
+              <th>
+                {{ 'ALEXA_ACTIF' | translate }}
+              </th>
+              <th>
+                {{ 'ALEXA_NAME' | translate }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-show="{{type.type == 'binary' && type.type.length}}" ng-repeat="type in room.deviceTypes" class="ng-cloak">
+              <td style="vertical-align: middle">{{type.name}}</td>
+              <td style="vertical-align: middle">{{type.deviceTypeName}}</td>
+              <td style="text-align:center;">
+                <input type="checkbox" class="minimal" ng-model="type.alexa">
+              </td>
+              <td><input type="text" placeholder="Nom pour Alexa" class="form-control" ng-model="type.friendlyName" ng-disabled="type.alexa == false" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- box-->
+  </div>
+</div>
+<!-- row -->
+<div class="modal fade alexa-help" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div>
+          {{ 'ALEXA_TEXT_1' | translate }}<br />
+          {{ 'ALEXA_TEXT_2' | translate }}<br />
+          {{ 'ALEXA_TEXT_3' | translate }}<br />
+          {{ 'ALEXA_TEXT_4' | translate }}<br />
+          {{ 'ALEXA_TEXT_5' | translate }}<br />
+          {{ 'ALEXA_TEXT_6' | translate }}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-flat" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>

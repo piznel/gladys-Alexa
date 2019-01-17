@@ -5,9 +5,9 @@
     .module('gladys')
     .controller('alexaCtrl', alexaCtrl);
 
-  alexaCtrl.$inject = ['alexaService', '$scope'];
+  alexaCtrl.$inject = ['alexaService', 'paramService', '$scope'];
 
-  function alexaCtrl(alexaService, $scope) {
+  function alexaCtrl(alexaService, paramService, $scope) {
     /* jshint validthis: true */
     var vm = this;
 
@@ -16,14 +16,30 @@
     vm.ready = false;
     vm.devicetypes = [];
     vm.alexaDevices = []
+    vm.libOptions = {
+      library: [
+        { id: 1, name: "fauxmojs" },
+        { id: 2, name: "wemore" }
+      ],
+      selectedLibrary: {}
+    };
 
     vm.saveConfig = saveConfig;
+    vm.saveLibrary = saveLibrary;
 
     activate()
 
     function activate() {
       vm.remoteIsBusy = true;
-      return alexaService.getDeviceTypes()
+      return paramService.getvalue('Alexa_lib')
+        .then(function(data) {
+          if (data.data === 1) {
+            vm.libOptions.selectedLibrary = { id: 1, name: "fauxmojs" }
+          } else {
+            vm.libOptions.selectedLibrary = { id: 2, name: "wemore" }
+          }
+          return alexaService.getDeviceTypes()
+        })
         .then(function(data) {
           vm.alexaDevices = data.data
           vm.ready = true;
@@ -57,6 +73,10 @@
             alexaService.errorNotificationTranslated('CONFIG_UNSAVE')
           }
         })
+    }
+
+    function saveLibrary() {
+        return paramService.update('Alexa_lib', vm.libOptions.selectedLibrary.id)
     }
   }
 })();
