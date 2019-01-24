@@ -12,7 +12,6 @@
       var service = {
         saveConfig: saveConfig,
         getDeviceTypes: getDeviceTypes,
-        getLibrary: getLibrary,
         successNotificationTranslated: successNotificationTranslated,
         errorNotificationTranslated: errorNotificationTranslated
       };
@@ -25,10 +24,6 @@
   
       function getDeviceTypes() {
         return $http({ method: 'GET', url: '/alexa/device/' });
-      }
-
-      function getLibrary() {
-        return $http({ method: 'GET', url: '/alexa/library/' });
       }
 
       function successNotificationTranslated(key, complement) {

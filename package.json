@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/piznel/Gladys-Alexa#readme",
   "dependencies": {
-    "fauxmojs": "^1.0.3",
     "wemore": "^0.6.1"
   }
 }

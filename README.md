@@ -1,13 +1,13 @@
 # Gladys-Alexa
 
-Control the "binary" type devicetypes of Gladys by Alexa.
+Control the "binary" type devicetypes of Gladys with Alexa.
 
 1. Add this module to Gladys:
 
-* Name: Gladys-Alexa
-* Version: 0.1.0
-* URL: https://github.com/piznel/Gladys-Alexa.git
-* slug: alexa
+   * Name: `Gladys-Alexa`
+   * Version: `0.1.0`
+   * URL: `https://github.com/piznel/Gladys-Alexa.git`
+   * slug: `alexa`
 
 2. Before restarting, configure the module.
 

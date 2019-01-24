@@ -25,21 +25,16 @@
     };
 
     vm.saveConfig = saveConfig;
-    vm.saveLibrary = saveLibrary;
 
     activate()
 
     function activate() {
       vm.remoteIsBusy = true;
-      return alexaService.getLibrary()
-        .then(function(data) {
-          if (data.data === 1) {
-            vm.libOptions.selectedLibrary = { id: 1, name: "fauxmojs" }
-          } else {
-            vm.libOptions.selectedLibrary = { id: 2, name: "wemore" }
-          }
-          return alexaService.getDeviceTypes()
-        })
+
+      var child = document.getElementsByClassName('nav nav-tabs');
+      child[0].parentNode.removeChild(child[0]);
+
+      return alexaService.getDeviceTypes()
         .then(function(data) {
           vm.alexaDevices = data.data
           vm.ready = true;
@@ -56,8 +51,11 @@
 
       vm.alexaDevices.forEach(function(room) {
         room.deviceTypes.forEach(function(deviceType) {
-          if (deviceType.friendlyName) {
-            alexaDevice[deviceType.id] = { 'alexa': deviceType.alexa, 'friendlyName': deviceType.friendlyName }
+          if (deviceType.friendlyName && deviceType.friendlyName.trim().length > 0) {
+            alexaDevice[deviceType.id] = {
+              'alexa': deviceType.alexa,
+              'friendlyName': deviceType.friendlyName.trim(),
+            }
           }
         });
       });
@@ -73,10 +71,6 @@
             alexaService.errorNotificationTranslated('CONFIG_UNSAVE')
           }
         })
-    }
-
-    function saveLibrary() {
-        return paramService.update('Alexa_lib', vm.libOptions.selectedLibrary.id)
     }
   }
 })();
