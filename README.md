@@ -1,5 +1,7 @@
 # Gladys-Alexa
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/piznel/gladys-Alexa.svg)](https://greenkeeper.io/)
+
 Control the "binary" type devicetypes of Gladys with Alexa.
 
 1. Add this module to Gladys:
